@@ -1,0 +1,1 @@
+export { DuckSimulator } from './DuckSimulator';
