@@ -8,13 +8,16 @@ import {
   quackCount,
   QuackCounter,
 } from "./QuackCounter"
+import { DuckFactory } from "./DuckFactory"
+import { AbstractDuckFactory } from "./AbstractDuckFactory"
 
 export class DuckSimulator {
   main = () => {
-    const mallardDuck = new MallardDuck()
-    const redheadDuck = new RedheadDuck()
-    const duckCall = new DuckCall()
-    const rubberDuck = new RubberDuck()
+    const duckFactory: AbstractDuckFactory = new DuckFactory()
+    const mallardDuck = duckFactory.createMallardDuck()
+    const redheadDuck = duckFactory.createRedheadDuck()
+    const duckCall = duckFactory.createDuckCall()
+    const rubberDuck = duckFactory.createRubberDuck()
     const gooseDuck = new GooseToDuckAdapter(new Goose())
 
     console.log("오리 시뮬레이션 게임")
