@@ -1,3 +1,3 @@
 export interface Quackable {
-  quack: () => void;
+  quack: () => void
 }

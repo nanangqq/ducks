@@ -1,1 +1,1 @@
-export { DuckSimulator } from './DuckSimulator';
+export { DuckSimulator } from "./DuckSimulator"
