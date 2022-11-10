@@ -3,7 +3,11 @@ import { DuckCall, RubberDuck } from "./duckies"
 import { Quackable } from "./Quackable"
 import { GooseToDuckAdapter } from "./adapters"
 import { Goose } from "../goose"
-import { countQuack, quackCount, QuackCounter } from "./QuackCounter"
+import {
+  CountQuackMethodDecorator,
+  quackCount,
+  QuackCounter,
+} from "./QuackCounter"
 
 export class DuckSimulator {
   main = () => {
@@ -25,7 +29,7 @@ export class DuckSimulator {
     // console.log("오리가 우는 소리를 낸 횟수: ", quackCount)
   }
 
-  @countQuack
+  // @CountQuackMethodDecorator
   simulate(duck: Quackable) {
     duck.quack()
   }

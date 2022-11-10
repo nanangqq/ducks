@@ -12,7 +12,7 @@ export class QuackCounter {
 
 export let quackCount = 0
 
-export function countQuack(
+export function CountQuackMethodDecorator(
   target: any,
   propertyKey: string,
   descriptor: PropertyDescriptor
@@ -34,4 +34,19 @@ export function countQuack(
   // decoratedMethod()
 
   descriptor.value = decoratedMethod
+}
+
+export function CountQuackClassDecorator<
+  T extends { new (...args: any[]): {} }
+>(constructor: T) {
+  const quack = constructor.prototype.quack
+
+  const decoratedQuack = (...args) => {
+    quackCount += 1
+    QuackCounter.increaseQuackCount()
+    quack.apply(args)
+  }
+
+  constructor.prototype.quack = decoratedQuack
+  return constructor
 }
