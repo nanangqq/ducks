@@ -10,11 +10,12 @@ import { DuckFactory } from "./DuckFactory"
 import { AbstractDuckFactory } from "./AbstractDuckFactory"
 import { Flock } from "./Flock"
 import { MallardDuck } from "./ducks"
+import { Quackologist } from "../observer/Quackologist"
 
 export class DuckSimulator {
   main = () => {
     const duckFactory: AbstractDuckFactory = new DuckFactory()
-    const mallardDuck: Quackable = duckFactory.createMallardDuck()
+    const mallardDuck = duckFactory.createMallardDuck()
     const redheadDuck: Quackable = duckFactory.createRedheadDuck()
     const duckCall: Quackable = duckFactory.createDuckCall()
     const rubberDuck: Quackable = duckFactory.createRubberDuck()
@@ -35,6 +36,9 @@ export class DuckSimulator {
     flockOfMallards.add(new MallardDuck())
 
     flockOfDucks.add(flockOfMallards)
+
+    const quackologist = new Quackologist()
+    flockOfDucks.registerObserver(quackologist)
 
     console.log("전체 무리")
     this.simulate(flockOfDucks)
